@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
+import './UserList.css'
 
 export default function UserList() {
   
@@ -24,14 +25,18 @@ export default function UserList() {
 
   return (
     <>
+    <div className='list'>
         {users.map((user) => (
 
-            <div>
-                <Link to={`/user/${user.id}`}>
-                  {user.nickname}
+            <div className='card'>
+                <Link to={`/user/${user.id}`} className='link'>
+                  
+                    {user.nickname}
+                  
                 </Link>
             </div>
         ))}
+    </div>
     </>
   )
 

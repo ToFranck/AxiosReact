@@ -4,12 +4,12 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import UserList from "./pages/UserList";
-import Nav from "./components/Nav";
-import User from "./pages/User";
-import CreateUser from "./pages/CreateUser";
-import Connexion from "./pages/Connexion";
-import MyProfil from "./pages/MyProfil";
+import UserList from "./pages/userList/UserList";
+import Nav from "./components/navbar/Nav";
+import User from "./pages/user/User";
+import CreateUser from "./pages/create/CreateUser";
+import Connexion from "./pages/login/Connexion";
+import MyProfil from "./pages/myProfil/MyProfil";
 
 
 const Layout = () => (
