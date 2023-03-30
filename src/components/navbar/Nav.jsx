@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <header>
-      <h2>RAV</h2>
+      <h2>YnovMescouilles</h2>
 
       <nav ref={navRef} onClick={showNavbar}>
 

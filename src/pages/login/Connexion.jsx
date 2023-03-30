@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./Connexion.css";
 
 export default function Connexion() {
   const url = "http://82.65.6.187:8002/auth";
@@ -40,11 +41,12 @@ export default function Connexion() {
 
   return (
     <>
-      <h2>Connexion</h2>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      
+      <form onSubmit={(e) => handleSubmit(e)} className="form">
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
+      <h2 className="title">Connexion</h2>
         <label>
-          Email:
+          <p>Email</p>
           <input
             type="text"
             name="email"
@@ -53,7 +55,8 @@ export default function Connexion() {
           />
         </label>
         <label>
-          Password:
+          <p>Password</p>
+          
           <input
             type="text"
             name="password"
@@ -62,7 +65,7 @@ export default function Connexion() {
           />
         </label>
 
-        <button type="submit">Connexion</button>
+        <button type="submit" className="submit">Connexion</button>
 
         
       </form>
