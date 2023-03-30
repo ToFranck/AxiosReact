@@ -22,7 +22,7 @@ export default function Navbar() {
 
         <Link to="createUser" className="links">Create User</Link>
 
-        <Link to="connexion" className="links">Connexion</Link>
+        <Link to="connexion" className="links">Login</Link>
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

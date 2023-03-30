@@ -8,7 +8,7 @@ export default function Connexion() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // Nouvelle variable d'état
+  const [errorMessage, setErrorMessage] = useState(""); 
   const nav = useNavigate();
   
 
@@ -30,7 +30,7 @@ export default function Connexion() {
       .then((response) => {
         console.log(response.data);
         setToken(response.data.token);
-        localStorage.setItem("token", response.data.token); // Stocker le token dans le localStorage
+        localStorage.setItem("token", response.data.token); 
         nav("/profil");
       })
       .catch((error) => {
