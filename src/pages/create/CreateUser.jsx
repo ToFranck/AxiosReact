@@ -7,7 +7,8 @@ import "./CreateUser.css";
 // import { useParams } from 'react-router-dom'
 
 export default function CreateUser() {
-  const url = "http://82.65.6.187:8002/api/users";
+  // const url = "http://82.65.6.187:8002/api/users";
+  const url = "https://ynov-workplace.osc-fr1.scalingo.io/api/users";
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [plainPassword, setplainPassword] = useState("");
@@ -37,7 +38,7 @@ export default function CreateUser() {
   return (
     <>
       
-      <form onSubmit={(e) => handleSubmit(e)} className="form">
+      <form onSubmit={(e) => handleSubmit(e)} className="form1">
       <h2 className="title">Crée un utilisateur </h2>
         <label>
           <p>Nickname</p>

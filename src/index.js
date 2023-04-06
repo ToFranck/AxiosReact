@@ -8,8 +8,13 @@ import UserList from "./pages/userList/UserList";
 import Nav from "./components/navbar/Nav";
 import User from "./pages/user/User";
 import CreateUser from "./pages/create/CreateUser";
-import Connexion from "./pages/login/Connexion";
+import Login from "./pages/login/Login";
 import MyProfil from "./pages/myProfil/MyProfil";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+import axios from "axios";
+import { setLoggedUser } from "./store/reducers/auth";
+
 
 
 const Layout = () => (
@@ -20,6 +25,23 @@ const Layout = () => (
 );
 
 
+const url ="https://ynov-workplace.osc-fr1.scalingo.io";
+
+const checkUser = async () => {
+  const token = localStorage.getItem("Utilisateur");
+  if (token) {
+    let user = await axios.get(`${url}/api/users/1/info`,
+    {
+     headers: {
+       'Content-Type': 'application/json',
+       "Authorization" : `Bearer ${token}`,
+     }
+   });
+   store.dispatch(setLoggedUser(setLoggedUser.data));
+  }
+
+};
+ Promise.all([checkUser()])
 
 const router = createBrowserRouter([
   {
@@ -29,7 +51,7 @@ const router = createBrowserRouter([
       { path: "userList", element: <UserList /> },
       { path: "user/:userId", element: <User/> },
       { path: "createUser", element: <CreateUser /> },
-      { path: "connexion", element:<Connexion />},
+      { path: "login", element:<Login />},
       { path: "profil", element:<MyProfil />},
       { path: "*", element: <div>404</div>}
     ],
@@ -40,8 +62,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <RouterProvider router={router} />
-    <App />
+    </Provider>
   </React.StrictMode>
 );
 

@@ -4,12 +4,15 @@ import "./User.css";
 
 export default function User() {
   let { userId } = useParams();
+
   return (
     <>
-      <div className="profil">
-        
-        {userId}
+      <div className="profil">{userId}
+      
+      
       </div>
+
+
     </>
   );
 }
