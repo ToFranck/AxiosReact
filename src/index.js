@@ -3,7 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
 import UserList from "./pages/userList/UserList";
 import Nav from "./components/navbar/Nav";
 import User from "./pages/user/User";
@@ -15,8 +20,6 @@ import { store } from "./store/store";
 import axios from "axios";
 import { setLoggedUser } from "./store/reducers/auth";
 
-
-
 const Layout = () => (
   <>
     <Nav />
@@ -24,24 +27,22 @@ const Layout = () => (
   </>
 );
 
-
-const url ="https://ynov-workplace.osc-fr1.scalingo.io";
+const url = "https://ynov-workplace.osc-fr1.scalingo.io";
 
 const checkUser = async () => {
   const token = localStorage.getItem("Utilisateur");
   if (token) {
-    let user = await axios.get(`${url}/api/users/1/info`,
-    {
-     headers: {
-       'Content-Type': 'application/json',
-       "Authorization" : `Bearer ${token}`,
-     }
-   });
-   store.dispatch(setLoggedUser(setLoggedUser.data));
+    let user = await axios.get(`${url}/api/users/1/info`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    store.dispatch(setLoggedUser(setLoggedUser.data));
   }
 
+  
 };
- Promise.all([checkUser()])
 
 const router = createBrowserRouter([
   {
@@ -49,21 +50,37 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <App /> },
       { path: "userList", element: <UserList /> },
-      { path: "user/:userId", element: <User/> },
+      { path: "user/:userId", element: <User /> },
       { path: "createUser", element: <CreateUser /> },
-      { path: "login", element:<Login />},
-      { path: "profil", element:<MyProfil />},
-      { path: "*", element: <div>404</div>}
+      { path: "login", element: <Login /> },
+      { path: "profil", element: <MyProfil /> },
+      { path: "*", element: <div>404</div> },
     ],
-  }
+  },
 ]);
 
+async function retrieveLoggedUser() {
+  try {
+    let loggedUser = await axios.get(`${url}/api/users/1/info`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("Utilisateur")}` },
+    });
+    console.log(loggedUser.data);
+    let user = loggedUser.data;
+    console.log(user);
+    let userLogged = { nickname: user.nickname, id: user.id };
+    store.dispatch(setLoggedUser(userLogged));
+  } catch (e) {}
+}
+
+Promise.all([retrieveLoggedUser(), checkUser()]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-    <RouterProvider router={router} />
+
+        <RouterProvider router={router} />
+
     </Provider>
   </React.StrictMode>
 );

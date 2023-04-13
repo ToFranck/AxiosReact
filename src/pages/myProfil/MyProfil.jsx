@@ -47,10 +47,7 @@ export default function Profil() {
         <h2>My Profil</h2>
         <p>Username: {info.nickname}</p>
         <p>Email: {info.email}</p>
-
         
-      
-
       </div>
     </>
   );
