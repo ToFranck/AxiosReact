@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Nav.css";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 
 import { useSelector } from "react-redux";
+import Disconnect from "../Deconnexion/disconnect";
 
 export default function Navbar() {
   const navRef = useRef();
@@ -45,6 +46,7 @@ export default function Navbar() {
           </Link>
         )}
 
+{LoggedUser && <Disconnect />}
 
 
 
