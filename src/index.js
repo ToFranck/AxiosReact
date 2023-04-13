@@ -19,6 +19,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import axios from "axios";
 import { setLoggedUser } from "./store/reducers/auth";
+import CreateGroup from "./pages/createGroup/CreateGroups";
 
 const Layout = () => (
   <>
@@ -40,8 +41,6 @@ const checkUser = async () => {
     });
     store.dispatch(setLoggedUser(setLoggedUser.data));
   }
-
-  
 };
 
 const router = createBrowserRouter([
@@ -52,6 +51,7 @@ const router = createBrowserRouter([
       { path: "userList", element: <UserList /> },
       { path: "user/:userId", element: <User /> },
       { path: "createUser", element: <CreateUser /> },
+      { path: "createGroup", element: <CreateGroup /> },
       { path: "login", element: <Login /> },
       { path: "profil", element: <MyProfil /> },
       { path: "*", element: <div>404</div> },
@@ -62,7 +62,9 @@ const router = createBrowserRouter([
 async function retrieveLoggedUser() {
   try {
     let loggedUser = await axios.get(`${url}/api/users/1/info`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem("Utilisateur")}` },
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("Utilisateur")}`,
+      },
     });
     console.log(loggedUser.data);
     let user = loggedUser.data;
@@ -78,9 +80,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-
-        <RouterProvider router={router} />
-
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );

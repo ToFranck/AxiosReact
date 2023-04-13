@@ -35,6 +35,9 @@ export default function Navbar() {
         <Link to="createUser" className="links">
           Create User
         </Link>
+        <Link to="createGroup" className="links">
+          Create Group
+        </Link>
 
         {LoggedUser ? (
           <Link to="myProfil" className="links">
@@ -46,7 +49,7 @@ export default function Navbar() {
           </Link>
         )}
 
-{LoggedUser && <Disconnect />}
+      {LoggedUser && <Disconnect />}
 
 
 
