@@ -70,7 +70,7 @@ export default function Login() {
       });
 
       localStorage.setItem("Utilisateur", response.data.token);
-      // nav("/profil");
+      nav("/profil");
 
       const userResponse = await axios.get(`${url}/api/users/1/info`,
        {
@@ -123,4 +123,3 @@ export default function Login() {
     </>
   );
 }
-
