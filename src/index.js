@@ -4,29 +4,18 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {
-  BrowserRouter,
-  createBrowserRouter,
-  Outlet,
-  RouterProvider,
+  BrowserRouter
 } from "react-router-dom";
-import UserList from "./pages/userList/UserList";
-import Nav from "./components/navbar/Nav";
-import User from "./pages/user/User";
-import CreateUser from "./pages/create/CreateUser";
-import Login from "./pages/login/Login";
-import MyProfil from "./pages/myProfil/MyProfil";
+
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import axios from "axios";
 import { setLoggedUser } from "./store/reducers/auth";
-import CreateGroup from "./pages/createGroup/CreateGroups";
 
-const Layout = () => (
-  <>
-    <Nav />
-    <Outlet />
-  </>
-);
+
+
+
+
 
 const url = "https://ynov-workplace.osc-fr1.scalingo.io";
 
@@ -43,21 +32,21 @@ const checkUser = async () => {
   }
 };
 
-const router = createBrowserRouter([
-  {
-    element: <Layout />,
-    children: [
-      { path: "/", element: <App /> },
-      { path: "userList", element: <UserList /> },
-      { path: "user/:userId", element: <User /> },
-      { path: "createUser", element: <CreateUser /> },
-      { path: "createGroup", element: <CreateGroup /> },
-      { path: "login", element: <Login /> },
-      { path: "profil", element: <MyProfil /> },
-      { path: "*", element: <div>404</div> },
-    ],
-  },
-]);
+// const router = createBrowserRouter([
+//   {
+//     element: <Layout />,
+//     children: [
+//       { path: "/", element: <App /> },
+//       { path: "userList", element: <UserList /> },
+//       { path: "user/:userId", element: <User /> },
+//       { path: "createUser", element: <CreateUser /> },
+//       { path: "createGroup", element: <CreateGroup /> },
+//       { path: "login", element: <Login /> },
+//       { path: "profil", element: <MyProfil /> },
+//       { path: "*", element: <div>404</div> },
+//     ],
+//   },
+// ]);
 
 async function retrieveLoggedUser() {
   try {
@@ -80,7 +69,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      {/* <RouterProvider router={router} /> */}
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

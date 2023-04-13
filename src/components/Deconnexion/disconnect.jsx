@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react';
+
 
 function LogoutButton() {
 
-  useEffect(() => {
-    localStorage.clear(); 
-  }, []);
+
 
   function handleLogout() {
     localStorage.clear();
