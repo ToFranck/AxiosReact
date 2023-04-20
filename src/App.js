@@ -11,7 +11,7 @@ export default function App() {
   const routing = useRoutes(routes());
 
   return (
-    
+
     <>
       {routing}
     </>

@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import axios from "axios";
 import { setLoggedUser } from "./store/reducers/auth";
+import { setLoading } from "./store/reducers/loading";
 
 
 
@@ -22,7 +23,7 @@ const url = "https://ynov-workplace.osc-fr1.scalingo.io";
 const checkUser = async () => {
   const token = localStorage.getItem("Utilisateur");
   if (token) {
-    let user = await axios.get(`${url}/api/users/1/info`, {
+    let user = await axios.get(`${url}/api/users/9/info`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -50,7 +51,7 @@ const checkUser = async () => {
 
 async function retrieveLoggedUser() {
   try {
-    let loggedUser = await axios.get(`${url}/api/users/1/info`, {
+    let loggedUser = await axios.get(`${url}/api/users/9/info`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("Utilisateur")}`,
       },
@@ -63,7 +64,8 @@ async function retrieveLoggedUser() {
   } catch (e) {}
 }
 
-Promise.all([retrieveLoggedUser(), checkUser()]);
+// Promise.all([retrieveLoggedUser(), checkUser()]);
+Promise.all([retrieveLoggedUser(), checkUser()]).finally(() => store.dispatch(setLoading(false)));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

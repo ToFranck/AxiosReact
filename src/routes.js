@@ -50,7 +50,8 @@ const Layout = () => (
           },
         {
           path: "login",
-          element: <>{GuestRoute(<Login />)}</>
+          element: (<Login />),
+            // element: <>{GuestRoute(<Login />)}</>
         },
         {
             path: "*",

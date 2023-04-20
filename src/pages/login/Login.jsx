@@ -72,7 +72,7 @@ export default function Login() {
       localStorage.setItem("Utilisateur", response.data.token);
       nav("/profil");
 
-      const userResponse = await axios.get(`${url}/api/users/1/info`,
+      const userResponse = await axios.get(`${url}/api/users/9/info`,
        {
         headers: {
           'Content-Type': 'application/json',

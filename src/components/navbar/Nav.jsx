@@ -40,7 +40,7 @@ export default function Navbar() {
         </Link>
 
         {LoggedUser ? (
-          <Link to="myProfil" className="links">
+          <Link to="profil" className="links">
             My Profil
           </Link>
         ) : (
@@ -48,6 +48,8 @@ export default function Navbar() {
             Login
           </Link>
         )}
+        {/* {LoggedUser && <Link to="profil" className="links">My Profil</Link>}
+        {!LoggedUser && <Link to="login" className="links">Login</Link>} */}
 
       {LoggedUser && <Disconnect />}
 
