@@ -45,6 +45,7 @@ export default function Profil() {
     <>
       <div>
         <h2>My Profil</h2>
+        <p> {info.id} </p>
         <p>Username: {info.nickname}</p>
         <p>Email: {info.email}</p>
         

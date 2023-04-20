@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 export default function CreateGroup() {
-const url = "https://ynov-workplace.osc-fr1.scalingo.io/api/groups/";
+const url = "https://ynov-workplace.osc-fr1.scalingo.io/api/groups";
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
@@ -20,7 +20,7 @@ const url = "https://ynov-workplace.osc-fr1.scalingo.io/api/groups/";
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage.getItem("Utilisateur")}`,
           },
         }
       )
