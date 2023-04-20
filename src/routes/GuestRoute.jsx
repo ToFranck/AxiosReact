@@ -2,13 +2,14 @@ import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const GuestRoute = ( Component ) => {
-    const isLoading = useSelector(state => state.loading.value);
-    const loggedUser = useSelector(state => state.auth.loggedUser);
+    const isLoading = useSelector((state) => state.loading.value);
+    const LoggedUser = useSelector((state) => state.auth.LoggedUser);
     if (isLoading) {
         return <div>Loading...</div>
     }
+    console.log(LoggedUser);
     return (
-        loggedUser ? <Navigate to="/" /> : <Component/>
+        LoggedUser ? <Navigate to="/" /> : Component
 
     )
 }

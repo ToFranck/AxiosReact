@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect } from "react";
 
 export default function Profil() {
-  const url ="https://ynov-workplace.osc-fr1.scalingo.io/api/users/1/info"
+  const url ="https://ynov-workplace.osc-fr1.scalingo.io/api/users/9/info"
   const [info, setInfo] = useState([]);
   
 
