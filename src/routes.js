@@ -42,16 +42,16 @@ const Layout = () => (
           },
         {
           path: "createUser",
-          element: <>{GuestRoute(<CreateUser />)}</>
+          element: (<CreateUser />),
         },
         {
             path: "createGroup",
-            element: <>{GuestRoute(<CreateGroup />)}</>
+            element: <>{PrivateRoute(<CreateGroup />)}</>
           },
         {
           path: "login",
-          element: (<Login />),
-            // element: <>{GuestRoute(<Login />)}</>
+          // element: (<Login />),
+          element: <>{GuestRoute(<Login />)}</>
         },
         {
             path: "*",
